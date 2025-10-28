@@ -40,7 +40,7 @@ This is a QQ quick login tool developed based on C#. It can list locally logged-
 
 ### Important Methods
 
-- `QQLoginType.Get_G_tk(string skey)` - Calculates QQ's g_tk value for API call authentication
+- `common.Get_G_tk(string skey)` - Calculates QQ's g_tk value for API call authentication
 - `QQQuickLogin.GetUins()` - Gets the list of locally logged-in QQ accounts
 - `QQQuickLogin.Login(uins)` - Executes the quick login operation
 - `QQQuickLogin.GetFace(uins)` - Gets QQ avatar information

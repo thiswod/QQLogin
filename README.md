@@ -40,7 +40,7 @@
 
 ### 重要方法
 
-- `QQLoginType.Get_G_tk(string skey)` - 计算QQ的g_tk值，用于API调用认证
+- `common.Get_G_tk(string skey)` - 计算QQ的g_tk值，用于API调用认证
 - `QQQuickLogin.GetUins()` - 获取本地已登录的QQ账号列表
 - `QQQuickLogin.Login(uins)` - 执行快速登录操作
 - `QQQuickLogin.GetFace(uins)` - 获取QQ头像信息
