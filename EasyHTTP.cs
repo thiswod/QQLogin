@@ -18,6 +18,7 @@ public class CookieManager
     /// </summary>
     public CookieManager SetCookie(string name, string value)
     {
+        if (value == "") return this;
         if (string.IsNullOrEmpty(name))
             throw new ArgumentNullException(nameof(name));
 

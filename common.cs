@@ -158,5 +158,21 @@ namespace QQLogin
             double refreshCode = _random.NextDouble();
             return $"{refreshCode:F16}";
         }
+        /// <summary>
+        /// 计算QQ的g_tk值
+        /// </summary>
+        /// <param name="skey">Cookie中的skey值</param>
+        /// <returns>计算后的g_tk值</returns>
+        public static int Get_G_tk(string skey)
+        {
+            int Base = 5381;
+            int length = skey.Length;
+            for (int count = 0; count < length; count++)
+            {
+                Base = Base + (Base << 5) + (int)skey[count];
+            }
+            // 保持32位整数
+            return Base & 2147483647;
+        }
     }
 }
