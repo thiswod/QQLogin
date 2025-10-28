@@ -27,7 +27,7 @@ namespace QQLogin
         /// 获取QQ登录类型
         /// </summary>
         /// <param name="appType"></param>
-        /// <returns>(S_URL,APPID)</returns>
+        /// <returns>(S_URL,APPID,DAID)</returns>
         public static (string,int,int)? Get(QQAppType appType)
         {
             switch (appType)
@@ -37,11 +37,11 @@ namespace QQLogin
                 case QQAppType.Qun:
                     return ("https://qun.qq.com/", 715030901, 73);
                 case QQAppType.Accounts:
-                    return ("https://accounts.qq.com/homepage#/", 1600001573,0);
+                    return ("https://accounts.qq.com/homepage#/", 1600001573,0);//DAID未获取
                 case QQAppType.Vip:
-                    return ("https://vip.qq.com/loginsuccess.html", 8000201,0);
+                    return ("https://vip.qq.com/loginsuccess.html", 8000201,0);//DAID未获取
                 case QQAppType.Weiyun:
-                    return ("https://www.weiyun.com/web/callback/common_qq_login_ok.html?login_succ", 527020901,0);
+                    return ("https://www.weiyun.com/web/callback/common_qq_login_ok.html?login_succ", 527020901,0);//DAID未获取
                 default:
                     return null;
             }
