@@ -2,6 +2,8 @@
 
 这是一个基于C#开发的QQ快速登录工具，可以列出本地已登录的QQ账号，并支持一键快速登录到指定的QQ应用。
 
+> Note: This project provides an English version of the README documentation. You can view [README_EN.md](README_EN.md) for English instructions.
+
 ## 主要功能
 
 1. **QQ账号列表显示** - 展示本地已登录的QQ账号，包括头像和QQ号
