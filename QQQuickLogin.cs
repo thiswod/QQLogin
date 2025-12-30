@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
+﻿using WodToolKit.Http;
+using WodToolKit.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace QQLogin
 {
@@ -78,7 +73,7 @@ namespace QQLogin
                 throw new Exception("无法获取指定的应用配置");
             }
             //Edge浏览器UA
-            _http.SetUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0");
+            _http.SetUserAgent("Mozilla/5.0 (Linux; U; Android 8.1.0; zh-cn; BLA-AL00 Build/HUAWEIBLA-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/8.9 Mobile Safari/537.36");
             Dictionary<string, string> post_data = new Dictionary<string, string>() {
                 {"proxy_url",""},// 登录框代理地址，留空表示使用默认
                 {"daid",_Daid.ToString()},// 登录框显示模式，5表示新样式
@@ -99,6 +94,7 @@ namespace QQLogin
             };
             _http.Open($"https://xui.ptlogin2.qq.com/cgi-bin/xlogin?{common.DictionaryToQueryString(post_data)}", HttpMethod.Get);
             _http.Send();
+            Debug.WriteLine($"https://xui.ptlogin2.qq.com/cgi-bin/xlogin?{common.DictionaryToQueryString(post_data)}");
             pt_local_token = _http.CookieManager().GetCookieValue("pt_local_token");
         }
         public string Login(uins uins)
@@ -145,12 +141,11 @@ namespace QQLogin
                 if (match.Success)
                 {
                     string callback = match.Groups[1].Value;
-                    _http.SetProxy("127.0.0.1:8888");
                     _http.Open(callback, HttpMethod.Get);
+                    _http.SetFollowLocation(false);
                     _http.SetTemporaryHeader("Referer", "https://xui.ptlogin2.qq.com/");
                     _http.SetTemporaryHeader("Connection", "keep-alive");
                     _http.Send();//跳转到应用
-                    _http.RemoveProxy();
                 }
                 CookieManager cookieManager = _http.CookieManager();
                 string p_skey = cookieManager.GetCookieValue("p_skey");

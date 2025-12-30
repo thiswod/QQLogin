@@ -1,10 +1,5 @@
-using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Net.Http;
-
+using WodToolKit.Http;
 namespace QQLogin
 {
     public partial class Form1 : Form
